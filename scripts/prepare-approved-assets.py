@@ -34,6 +34,29 @@ for source_name, output_name in {
     convert(source_name, output_name)
 
 
+tile_size = 600
+gutter = 14
+collage = Image.new("RGB", (tile_size * 2 + gutter, tile_size * 2 + gutter), "#f1e3ca")
+for index, source_name in enumerate(
+    (
+        "at-a-glance-inbox.png",
+        "at-a-glance-tasks.png",
+        "at-a-glance-projects.png",
+        "at-a-glance-seeds.png",
+    )
+):
+    with Image.open(SOURCE / source_name) as source:
+        tile = ImageOps.fit(
+            ImageOps.exif_transpose(source).convert("RGB"),
+            (tile_size, tile_size),
+            method=Image.Resampling.LANCZOS,
+        )
+    x = (index % 2) * (tile_size + gutter)
+    y = (index // 2) * (tile_size + gutter)
+    collage.paste(tile, (x, y))
+save_web_jpeg(collage, "at-a-glance-collage.jpg")
+
+
 with Image.open(SOURCE / "areas-work-home-source.png") as source:
     save_web_jpeg(source.crop((0, 0, 507, 1536)), "area-work-leadership.jpg")
     save_web_jpeg(source.crop((514, 0, 1024, 1536)), "area-home-personal-life.jpg")
