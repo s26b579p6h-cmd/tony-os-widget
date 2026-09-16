@@ -24,7 +24,9 @@ function setOpen(open) {
 try {
   for (const link of readConfiguration()) {
     const anchor = document.createElement('a');
-    anchor.href = link.native;
+    anchor.href = link.url;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener noreferrer';
     anchor.title = link.label;
     const icon = document.createElement('span');
     icon.className = 'icon'; icon.setAttribute('aria-hidden','true'); icon.textContent = link.icon;
