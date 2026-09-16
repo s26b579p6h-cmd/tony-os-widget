@@ -38,7 +38,7 @@ body { position: relative; padding: 4px; font-family: Arial, Helvetica, sans-ser
   position: absolute;
   z-index: -2;
   inset: 0;
-  background-image: url('assets/tony/identity/TonyOS_Hero_Afternoon.jpg');
+  background-image: url('assets/tony/identity/TonyOS_Hero_Afternoon.webp');
   background-size: cover;
   background-position: center 48%;
   background-repeat: no-repeat;
@@ -46,12 +46,12 @@ body { position: relative; padding: 4px; font-family: Arial, Helvetica, sans-ser
 }
 
 .widget[data-time-state="morning"] .panorama {
-  background-image: url('assets/tony/identity/TonyOS_Hero_Morning.jpg');
+  background-image: url('assets/tony/identity/TonyOS_Hero_Morning.webp');
   background-position: center 48%;
 }
 
 .widget[data-time-state="evening"] .panorama {
-  background-image: url('assets/tony/identity/TonyOS_Hero_Evening.jpg');
+  background-image: url('assets/tony/identity/TonyOS_Hero_Evening.webp');
   background-position: center 52%;
 }
 
