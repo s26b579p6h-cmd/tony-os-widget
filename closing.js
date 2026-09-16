@@ -63,6 +63,7 @@ const QUOTES = [
 'The journey has room for both effort and joy.',
 'There is always another view to discover.'
 ];
+const FRAMES = {morning:{viewBox:'0 132 2170 464',width:2170,height:725},day:{viewBox:'0 101 2172 523',width:2172,height:724},evening:{viewBox:'0 104 2172 523',width:2172,height:724}};
 function easternDate(now) {
   const parts = new Intl.DateTimeFormat('en-US', {timeZone: TZ, year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', hourCycle: 'h23'}).formatToParts(now);
   return Object.fromEntries(parts.filter(p => p.type !== 'literal').map(p => [p.type, Number(p.value)]));
@@ -72,7 +73,13 @@ function updateClosing(now = new Date()) {
   const state = hour < 11 ? 'morning' : hour < 18 ? 'day' : 'evening';
   const closing = document.querySelector('.closing');
   closing.dataset.timeState = state;
-  document.querySelector('.landscape').src = `assets/tony/closing-visual-${state}.jpg`;
+  const frame = FRAMES[state];
+  document.querySelector('.landscape').setAttribute('viewBox', frame.viewBox);
+  const panorama = document.querySelector('.panorama');
+  panorama.setAttribute('href', `assets/tony/closing-panorama-${state}.png`);
+  panorama.setAttribute('width', frame.width);
+  panorama.setAttribute('height', frame.height);
+  document.querySelector('.compact-landscape').src = `assets/tony/closing-visual-${state}.jpg`;
   const calendarDay = Math.floor(Date.UTC(year, month - 1, day) / 86400000);
   document.querySelector('.quote').textContent = QUOTES[((calendarDay % QUOTES.length) + QUOTES.length) % QUOTES.length];
 }
