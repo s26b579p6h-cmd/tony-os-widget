@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Tony OS · Focus Tabs Test</title>
+  <link rel="stylesheet" href="focus-tabs-test.css?v=1">
+  <script src="focus-tabs-test.js?v=1" defer></script>
+</head>
+<body>
+  <main class="focus-card" aria-label="Tony OS task focus tabs test">
+    <div class="wave-layer" aria-hidden="true"></div>
+    <section class="content">
+      <p class="eyebrow">Tony OS · compact home view</p>
+      <h1>Today's Focus</h1>
+      <div class="tabs" role="tablist" aria-label="Task sections">
+        <button class="tab active" type="button" role="tab" aria-selected="true" data-view="today"><span class="tab-icon">☀️</span>Today</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-view="upcoming"><span class="tab-icon">🌅</span>Upcoming</button>
+        <button class="tab" type="button" role="tab" aria-selected="false" data-view="nodate"><span class="tab-icon">🧭</span>No Date</button>
+      </div>
+      <div id="task-list" class="task-list" aria-live="polite"></div>
+      <p class="note">Hosted image-layer test · maximum 5 items per tab · each task opens its Todoist item</p>
+    </section>
+  </main>
+</body>
+</html>
