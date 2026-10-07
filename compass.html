@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Tony OS · Today’s Compass</title>
+  <style>
+    :root{color-scheme:light;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#173b55}*{box-sizing:border-box}html,body{margin:0;min-height:100%;overflow:hidden;background:transparent}body{padding:10px 8px}.compass-card{position:relative;isolation:isolate;width:100%;max-width:980px;height:clamp(360px,48vw,495px);margin:0 auto;overflow:hidden;border:1px solid #b8cedd;border-radius:14px;background:#edf5fa;box-shadow:0 10px 24px rgba(55,89,112,.18)}.scene{position:absolute;z-index:-1;inset:0;background-image:linear-gradient(100deg,rgba(244,249,252,.99) 0%,rgba(244,249,252,.96) 52%,rgba(244,249,252,.60) 78%,rgba(244,249,252,.15) 100%),url("assets/tony/daily-compass-v2.png");background-position:center;background-size:cover}.scene::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(55,130,150,.13),transparent 45%)}.content{height:100%;display:flex;flex-direction:column;padding:24px 26px}.heading-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.eyebrow{margin:2px 0 5px;color:#467c94;font-size:10px;font-weight:850;letter-spacing:.17em}.heading-row h1{display:flex;align-items:center;gap:10px;margin:0;color:#173b55;font-size:27px;line-height:1.15;text-shadow:0 1px 8px #fff}.compass-mark{display:grid;place-items:center;width:32px;height:32px;border:1px solid #a7cad9;border-radius:10px;background:linear-gradient(145deg,#effaff,#bfdfea);color:#1e7996;font-size:25px;line-height:1;box-shadow:0 3px 8px rgba(45,105,130,.16)}.verified{display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:5px 9px;border:1px solid #b6d6c6;border-radius:999px;background:rgba(255,255,255,.76);color:#397b62;font-size:10px;font-weight:850;letter-spacing:.09em;white-space:nowrap}.verified i{width:7px;height:7px;border-radius:50%;background:#2ab47b;box-shadow:0 0 0 3px rgba(42,180,123,.12)}.briefing{width:min(720px,83%);margin-top:18px}.message{margin:0;color:#183d55;font-size:19px;font-weight:750;line-height:1.35;text-wrap:balance}.shape{margin-top:16px;padding:13px 15px;border:1px solid rgba(174,205,217,.9);border-radius:12px;background:rgba(255,255,255,.72);box-shadow:0 5px 14px rgba(62,104,122,.09);backdrop-filter:blur(7px)}.shape-label{color:#43809a;font-size:10px;font-weight:850;letter-spacing:.12em}.shape p{margin:5px 0 0;color:#355a6b;font-size:13px;line-height:1.45}.signals{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}.signals li{padding:7px 10px;border:1px solid rgba(180,207,218,.9);border-radius:9px;background:rgba(255,255,255,.68);color:#355a6b;font-size:11px;font-weight:650}.signals li::before{content:"•";margin-right:7px;color:#2b8ba3}footer{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-top:auto}.freshness{margin:0;color:#4d7480;font-size:10px}.freshness span:first-child{color:#278d69;font-weight:900}.actions{display:flex;align-items:center;gap:9px}.action{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:9px 13px;border-radius:10px;font-size:10px;font-weight:850;letter-spacing:.035em;text-decoration:none;box-shadow:0 3px 9px rgba(40,85,105,.11);transition:transform .15s ease,background .15s ease}.action:hover{transform:translateY(-1px)}.action.secondary{border:1px solid #afcbd7;background:rgba(255,255,255,.78);color:#346c83}.action.primary{border:1px solid #337b94;background:#2f7f99;color:#fff}.action.primary:hover{background:#286f87}.action span{font-size:15px;line-height:10px}@media(max-width:650px){body{padding:6px 5px}.compass-card{height:440px}.content{padding:18px}.heading-row h1{font-size:22px}.briefing{width:100%;margin-top:14px}.message{font-size:16px}.shape{margin-top:12px}.shape p{font-size:12px}footer{display:block}.freshness{margin-bottom:9px}.actions{justify-content:stretch}.action{flex:1;padding:8px 7px;font-size:9px}}
+  </style>
+</head>
+<body>
+  <main class="compass-card" aria-label="Tony OS today's Compass">
+    <div class="scene" aria-hidden="true"></div>
+    <section class="content">
+      <header class="heading-row">
+        <div>
+          <p class="eyebrow">TODAY’S COMPASS</p>
+          <h1><span class="compass-mark" aria-hidden="true">⌁</span><span id="date">Latest verified brief</span></h1>
+        </div>
+        <span class="verified"><i aria-hidden="true"></i> VERIFIED</span>
+      </header>
+
+      <div class="briefing">
+        <p class="message" id="message">Open the full Compass for today’s verified guidance.</p>
+        <div class="shape">
+          <span class="shape-label">TODAY’S SHAPE</span>
+          <p id="shape">The latest successful briefing remains available.</p>
+        </div>
+        <ul class="signals" id="signals" aria-label="Important signals"></ul>
+      </div>
+
+      <footer>
+        <p class="freshness"><span aria-hidden="true">✓</span> <span id="verifiedAt">Latest verified result</span></p>
+        <div class="actions">
+          <a class="action secondary" id="refresh" href="http://localhost:5678/form/tony-os-refresh" target="_blank" rel="noopener noreferrer">REFRESH COMPASS</a>
+          <a class="action primary" id="open" href="https://app.notion.com/p/f10ba5f84dd341b3a762899defc8f74c" target="_blank" rel="noopener noreferrer">OPEN FULL COMPASS <span aria-hidden="true">→</span></a>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const byId = id => document.getElementById(id);
+      const clean = value => typeof value === 'string' ? value.trim() : '';
+      const safeUrl = (value, fallback) => {
+        try {
+          const url = new URL(value);
+          return ['https:', 'http:'].includes(url.protocol) ? url.href : fallback;
+        } catch (_) { return fallback; }
+      };
+      let data = {};
+      try { data = JSON.parse(decodeURIComponent(location.hash.slice(1) || '{}')); } catch (_) {}
+
+      if (clean(data.date)) byId('date').textContent = data.date;
+      if (clean(data.message)) byId('message').textContent = data.message;
+      if (clean(data.shape)) byId('shape').textContent = data.shape;
+      if (clean(data.verifiedAt)) byId('verifiedAt').textContent = `Verified ${data.verifiedAt}`;
+      byId('open').href = safeUrl(data.openUrl, byId('open').href);
+      byId('refresh').href = safeUrl(data.refreshUrl, byId('refresh').href);
+
+      const signals = Array.isArray(data.signals) ? data.signals.map(clean).filter(Boolean).slice(0, 2) : [];
+      for (const signal of signals) {
+        const item = document.createElement('li');
+        item.textContent = signal;
+        byId('signals').appendChild(item);
+      }
+      if (!signals.length) byId('signals').hidden = true;
+
+      byId('refresh').addEventListener('click', event => {
+        const button = event.currentTarget;
+        if (button.dataset.opening === 'true') {
+          event.preventDefault();
+          return;
+        }
+        button.dataset.opening = 'true';
+        button.textContent = 'OPENING SECURE REFRESH…';
+        setTimeout(() => {
+          button.dataset.opening = 'false';
+          button.textContent = 'REFRESH COMPASS';
+        }, 10000);
+      });
+    })();
+  </script>
+</body>
+</html>
